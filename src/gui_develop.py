@@ -1,9 +1,14 @@
 """Author: Nagabhushan S Baddi (InStep Intern)\nOrganization: Infosys Ltd.\nGUI app (module) to detect botnet traffic using Machine Learning"""
 
 #import the modules
-from Tkinter import *
-from ttk import *
-from tkFileDialog import *
+#from Tkinter import *
+from tkinter import *
+from tkinter import ttk
+import tkinter
+#from ttk import *
+from tkinter.ttk import *
+#from tkFileDialog import *
+from tkinter.filedialog import *
 import dataset_load
 import models
 import threading
@@ -12,7 +17,7 @@ import pickle
 
 #load data set
 file = open('../dataset/flowdata.pickle', 'rb')
-sd = pickle.load(file)
+sd = pickle.load(file, encoding='latin-1')
 X, Y, XT, YT = sd[0], sd[1], sd[2], sd[3]
 
 def callSuitable(mlalgo, v2):
@@ -44,7 +49,8 @@ if __name__ == "__main__":
     root.title('Botnet Detection Using Machine Learning')
     root.resizable(width=False, height=False)
 
-    frame1 = Frame(root, padding=(0, 0, 0, 0), width=300)
+    #frame1 = Frame(root, padding=(0, 0, 0, 0), width=300)
+    frame1 = Frame(root, width=300)
 
     label = Label(frame1, text='Dataset File:    \n(.binetflow file)')
     label.grid(row=0, column=0, rowspan=1, columnspan=1, padx=10, pady=10, sticky=(W, E))

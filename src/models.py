@@ -12,6 +12,7 @@ from keras.models import *
 from keras.layers import Dense, Activation
 from keras.optimizers import *
 import threading
+import numpy as np
 
 class LogModel(threading.Thread):
     """Threaded Logistic Regression Model"""
@@ -201,7 +202,8 @@ class ANNModel(threading.Thread):
         sgd = SGD(lr=0.01, decay=0.000001, momentum=0.9, nesterov=True)
         model.compile(optimizer=sgd,
                   loss='mse')
-        model.fit(X, Y, nb_epoch=200, batch_size=100)
+        #model.fit(X, Y, nb_epoch=200, batch_size=100)
+        model.fit(X, Y, epochs=200, batch_size=100)
         sd = model.predict(XT)
         sd = sd[:, 0]
         sdList = []
